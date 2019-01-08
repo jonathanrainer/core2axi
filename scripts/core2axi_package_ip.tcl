@@ -38,3 +38,4 @@ add_files -norecurse $rtlFilesFull
 update_compile_order -fileset sources_1
 
 ipx::package_project -root_dir [file join $workDir cip core2axi] -vendor "jonathan-rainer.com" -library Kuuga
+

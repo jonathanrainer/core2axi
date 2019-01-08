@@ -1,7 +1,7 @@
 module core2axi_wrapper
 #(
     // Base address of targeted slave
-    parameter  C_M_TARGET_SLAVE_BASE_ADDR	= 32'h40000000,
+    parameter  C_M_TARGET_SLAVE_BASE_ADDR	= 32'h00000000,
     // Burst Length. Supports 1, 2, 4, 8, 16, 32, 64, 128, 256 burst lengths
     parameter integer C_M_AXI_BURST_LEN	= 16,
     // Thread ID Width
@@ -32,8 +32,8 @@ module core2axi_wrapper
     input  [C_M_AXI_ADDR_WIDTH-1:0] data_addr_i,
     input                           data_we_i,
     input  [3:0]                    data_be_i,
-    output [31:0]                   data_rdata_o,
-    input  [31:0]                   data_wdata_i,
+    output [C_M_AXI_DATA_WIDTH-1:0]                   data_rdata_o,
+    input  [C_M_AXI_DATA_WIDTH-1:0]                   data_wdata_i,
 
     // ---------------------------------------------------------
     // AXI TARG Port Declarations ------------------------------
@@ -160,3 +160,12 @@ module core2axi_wrapper
 	);
 
 endmodule
+
+function integer clog2;
+input integer value;
+begin
+value = value-1;
+for (clog2=0; value>0; clog2=clog2+1)
+value = value>>1;
+end
+endfunction

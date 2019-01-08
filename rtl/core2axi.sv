@@ -27,9 +27,9 @@ module core2axi
     output logic                          data_rvalid_o,
     input  logic [AXI4_ADDRESS_WIDTH-1:0] data_addr_i,
     input  logic                          data_we_i,
-    input  logic [3:0]                    data_be_i,
-    output logic [31:0]                   data_rdata_o,
-    input  logic [31:0]                   data_wdata_i,
+    input  logic [$clog2(AXI4_RDATA_WIDTH)-1:0]                    data_be_i,
+    output logic [AXI4_RDATA_WIDTH-1:0]                   data_rdata_o,
+    input  logic [AXI4_WDATA_WIDTH-1:0]                   data_wdata_i,
 
     // ---------------------------------------------------------
     // AXI TARG Port Declarations ------------------------------
