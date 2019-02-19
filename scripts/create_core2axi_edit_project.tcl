@@ -5,16 +5,11 @@ set workDir [file join $thisDir .. work]
 # Set up folders to be refered to later
 set rtlRoot [file join $thisDir .. rtl]
 
-# Set up list of RTL files
-set rtlFiles {
-    core2axi.sv
-    core2axi_wrapper.v
-}
-
+source [file join $thisDir core2axi_manifest.tcl]
 
 set rtlFilesFull {}
 
-foreach f $rtlFiles {
+foreach f $core2AXIRTLFiles {
     lappend rtlFilesFull [file join $rtlRoot $f]
 }
 
